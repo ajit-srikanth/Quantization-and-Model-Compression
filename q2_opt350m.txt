@@ -1,0 +1,20 @@
+(base) skills@phoenix:~$ python 2main.py
+/home/skills/miniconda3/lib/python3.10/site-packages/torch/_utils.py:776: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  return self.fget.__get__(instance, owner)()
+`low_cpu_mem_usage` was None, now set to True since model is quantized.
+Unused kwargs: ['bnb_8bit_compute_dtype']. These kwargs are not used in <class 'transformers.utils.quantization_config.BitsAndBytesConfig'>.
+`low_cpu_mem_usage` was None, now set to True since model is quantized.
+`low_cpu_mem_usage` was None, now set to True since model is quantized.
+cuda:0 cuda:0 cuda:0 cuda:0
+Default model size : 1324.785664 MB
+8 bit model size : 359.354368 MB
+4 bit model size : 207.835136 MB
+nf4 model size : 207.835136 MB
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1500/1500 [06:57<00:00,  3.60it/s]
+Overall Average Perplexity of Default Model: 19.1325
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1500/1500 [04:21<00:00,  5.75it/s]
+Overall Average Perplexity of 8 bit Model: 19.1612
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1500/1500 [03:26<00:00,  7.26it/s]
+Overall Average Perplexity of 4 bit Model: 22.8055
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1500/1500 [03:28<00:00,  7.21it/s]
+Overall Average Perplexity of nf4 bit Model: 21.0444

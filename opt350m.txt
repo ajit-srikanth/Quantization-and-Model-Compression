@@ -1,0 +1,61 @@
+/home/skills/miniconda3/lib/python3.10/site-packages/torch/_utils.py:776: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  return self.fget.__get__(instance, owner)()
+model size before quantization : 1324.785664 MB
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1500/1500 [06:55<00:00,  3.61it/s]
+Overall Average Perplexity before quantization: 19.1325
+OPTForCausalLM(
+  (model): OPTModel(
+    (decoder): OPTDecoder(
+      (embed_tokens): Embedding(50272, 512, padding_idx=1)
+      (embed_positions): OPTLearnedPositionalEmbedding(2050, 1024)
+      (project_out): Linear(in_features=1024, out_features=512, bias=False)
+      (project_in): Linear(in_features=512, out_features=1024, bias=False)
+      (layers): ModuleList(
+        (0-23): 24 x OPTDecoderLayer(
+          (self_attn): OPTAttention(
+            (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+            (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+            (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+            (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          )
+          (activation_fn): ReLU()
+          (self_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+          (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+          (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+          (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+  )
+  (lm_head): Linear(in_features=512, out_features=50272, bias=False)
+)
+OPTForCausalLM(
+  (model): OPTModel(
+    (decoder): OPTDecoder(
+      (embed_tokens): Embedding(50272, 512, padding_idx=1)
+      (embed_positions): OPTLearnedPositionalEmbedding(2050, 1024)
+      (project_out): W8A16LinearLayer()
+      (project_in): W8A16LinearLayer()
+      (layers): ModuleList(
+        (0-23): 24 x OPTDecoderLayer(
+          (self_attn): OPTAttention(
+            (k_proj): W8A16LinearLayer()
+            (v_proj): W8A16LinearLayer()
+            (q_proj): W8A16LinearLayer()
+            (out_proj): W8A16LinearLayer()
+          )
+          (activation_fn): ReLU()
+          (self_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+          (fc1): W8A16LinearLayer()
+          (fc2): W8A16LinearLayer()
+          (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+  )
+  (lm_head): Linear(in_features=512, out_features=50272, bias=False)
+)
+model size after quantization : 416.56 MB
+Memory saved : 908.22 MB
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1500/1500 [07:23<00:00,  3.38it/s]
+Overall Average Perplexity after quantization: 19.1471
